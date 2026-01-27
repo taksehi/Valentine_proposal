@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
+import { Heart } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import Heart3D from './heart-3d'; // Import the new 3D heart component
 
 interface FloatingHeartsProps {
   count?: number;
@@ -10,7 +10,7 @@ interface FloatingHeartsProps {
 
 const FloatingHearts: React.FC<FloatingHeartsProps> = ({ count = 15 }) => {
   const [hearts, setHearts] = useState<
-    { id: number; left: string; delay: string; duration: string; size: string; rotationSpeed: string }[]
+    { id: number; left: string; delay: string; duration: string; size: string }[]
   >([]);
 
   useEffect(() => {
@@ -20,7 +20,6 @@ const FloatingHearts: React.FC<FloatingHeartsProps> = ({ count = 15 }) => {
       delay: `${Math.random() * 5}s`, // Random delay up to 5 seconds
       duration: `${5 + Math.random() * 5}s`, // Random duration between 5 and 10 seconds
       size: `${20 + Math.random() * 30}px`, // Random size between 20px and 50px
-      rotationSpeed: `${5 + Math.random() * 10}s`, // Random rotation speed for 3D effect
     }));
     setHearts(newHearts);
   }, [count]);
@@ -28,17 +27,17 @@ const FloatingHearts: React.FC<FloatingHeartsProps> = ({ count = 15 }) => {
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
       {hearts.map((heart) => (
-        <Heart3D
+        <Heart
           key={heart.id}
-          size={heart.size}
-          rotationSpeed={heart.rotationSpeed}
           className={cn(
-            "absolute opacity-70 animate-float-heart"
+            "absolute text-valentine-button opacity-70 animate-float-heart"
           )}
           style={{
             left: heart.left,
             animationDelay: heart.delay,
             animationDuration: heart.duration,
+            width: heart.size,
+            height: heart.size,
             bottom: '-50px', // Start slightly below the viewport
           }}
         />
