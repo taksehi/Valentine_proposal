@@ -11,18 +11,13 @@ const AskValentinePage: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [noButtonPosition, setNoButtonPosition] = useState<{
-    top: string | number;
-    left: string | number;
-    right: string | number;
-    bottom: string | number;
+    top: string;
+    left: string;
   }>({
-    top: 'auto',
-    left: 'auto',
-    right: 'auto',
-    bottom: 'auto',
+    top: '50%',
+    left: '50%',
   });
 
-  // Function to set a random position within bounds
   const setRandomPosition = () => {
     if (!noButtonRef.current || !containerRef.current) return;
 
@@ -38,8 +33,6 @@ const AskValentinePage: React.FC = () => {
 
     // Ensure button dimensions are not larger than usable area
     if (buttonRect.width > usableWidth || buttonRect.height > usableHeight) {
-      // If the button is too large, we can't move it freely.
-      // For now, we'll just log a warning.
       console.warn("No button is too large for the container's usable area.");
       return;
     }
@@ -64,8 +57,6 @@ const AskValentinePage: React.FC = () => {
     setNoButtonPosition({
       top: `${newTop}px`,
       left: `${newLeft}px`,
-      right: 'auto',
-      bottom: 'auto',
     });
   };
 
@@ -139,8 +130,6 @@ const AskValentinePage: React.FC = () => {
       setNoButtonPosition({
         top: `${newTop}px`,
         left: `${newLeft}px`,
-        right: 'auto',
-        bottom: 'auto',
       });
     }
   };
@@ -185,8 +174,7 @@ const AskValentinePage: React.FC = () => {
         style={{
           top: noButtonPosition.top,
           left: noButtonPosition.left,
-          right: noButtonPosition.right,
-          bottom: noButtonPosition.bottom,
+          transform: 'translate(-50%, -50%)',
         }}
       >
         No (over my dead body)
