@@ -26,7 +26,7 @@ const OurMomentsPage: React.FC = () => {
         setCurrentPhotoIndex((prevIndex) => (prevIndex + 1) % photos.length);
         setIsFading(false);
       }, 1000); // Fade duration
-    }, 5000); // 5 seconds per photo
+    }, 2000); // 5 seconds per photo
 
     return () => clearInterval(interval);
   }, [photos.length]);
