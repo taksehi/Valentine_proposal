@@ -65,6 +65,10 @@ export default {
                     text: 'hsl(var(--valentine-text))',
                     button: 'hsl(var(--valentine-button))',
                     'button-foreground': 'hsl(var(--valentine-button-foreground))',
+                    gradient: {
+                        start: 'hsl(var(--valentine-gradient-start))',
+                        end: 'hsl(var(--valentine-gradient-end))',
+                    },
                 }
   		},
   		borderRadius: {

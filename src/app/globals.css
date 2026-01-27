@@ -79,6 +79,8 @@
     --valentine-text: 240 5.3% 26.1%; /* Darker text for contrast */
     --valentine-button: 350 70% 50%; /* Romantic Red */
     --valentine-button-foreground: 0 0% 98%; /* White */
+    --valentine-gradient-start: 330 100% 98%; /* Very light pink */
+    --valentine-gradient-end: 280 100% 95%; /* Light lavender */
   }
   .dark {
 
@@ -152,6 +154,8 @@
     --valentine-text: 0 0% 98%; /* White text */
     --valentine-button: 350 70% 50%; /* Romantic Red */
     --valentine-button-foreground: 0 0% 98%; /* White */
+    --valentine-gradient-start: 330 40% 10%; /* Darker very light pink */
+    --valentine-gradient-end: 280 40% 15%; /* Darker light lavender */
   }
 }
 
