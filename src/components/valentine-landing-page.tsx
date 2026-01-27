@@ -9,7 +9,20 @@ const ValentineLandingPage: React.FC = () => {
   const router = useRouter();
 
   const handleButtonClick = () => {
-    router.push('/ask-valentine');
+    // Create audio element and start playing music
+    const audio = new Audio('/romantic-music.mp3');
+    audio.loop = true;
+    audio.volume = 0.3;
+
+    // Play the music
+    audio.play().then(() => {
+      // Navigate to the next page after music starts
+      router.push('/ask-valentine');
+    }).catch(error => {
+      console.log("Audio play failed, navigating anyway:", error);
+      // Navigate even if audio fails to play
+      router.push('/ask-valentine');
+    });
   };
 
   return (
