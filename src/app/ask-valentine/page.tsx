@@ -18,9 +18,65 @@ const AskValentinePage: React.FC = () => {
   }>({
     top: 'auto',
     left: 'auto',
-    right: '6', // Initial position from Tailwind classes
-    bottom: '6', // Initial position from Tailwind classes
+    right: 'auto',
+    bottom: 'auto',
   });
+
+  // Function to set a random position within bounds
+  const setRandomPosition = () => {
+    if (!noButtonRef.current || !containerRef.current) return;
+
+    const buttonRect = noButtonRef.current.getBoundingClientRect();
+    const containerRect = containerRef.current.getBoundingClientRect();
+
+    // Define padding based on p-6 (1.5rem = 24px)
+    const paddingX = 24;
+    const paddingY = 24;
+
+    const usableWidth = containerRect.width - 2 * paddingX;
+    const usableHeight = containerRect.height - 2 * paddingY;
+
+    // Ensure button dimensions are not larger than usable area
+    if (buttonRect.width > usableWidth || buttonRect.height > usableHeight) {
+      // If the button is too large, we can't move it freely.
+      // For now, we'll just log a warning.
+      console.warn("No button is too large for the container's usable area.");
+      return;
+    }
+
+    let newTop, newLeft;
+    let attempts = 0;
+    const maxAttempts = 50;
+
+    do {
+      newTop = paddingY + Math.random() * (usableHeight - buttonRect.height);
+      newLeft = paddingX + Math.random() * (usableWidth - buttonRect.width);
+      attempts++;
+    } while (
+      attempts < maxAttempts &&
+      // Optional: ensure initial random position isn't too close to the center of the screen
+      Math.sqrt(
+        Math.pow((containerRect.width / 2) - (newLeft + buttonRect.width / 2), 2) +
+        Math.pow((containerRect.height / 2) - (newTop + buttonRect.height / 2), 2)
+      ) < 100 // Example check, adjust as needed
+    );
+
+    setNoButtonPosition({
+      top: `${newTop}px`,
+      left: `${newLeft}px`,
+      right: 'auto',
+      bottom: 'auto',
+    });
+  };
+
+  useEffect(() => {
+    // Set an initial random position when the component mounts
+    setRandomPosition();
+    // Also, re-position on window resize to stay within bounds
+    const handleResize = () => setRandomPosition();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []); // Run once on mount
 
   const handleYesClick = () => {
     router.push('/flower-animation');
@@ -50,14 +106,26 @@ const AskValentinePage: React.FC = () => {
     const triggerDistance = 100; // Distance in pixels to trigger movement
 
     if (distance < triggerDistance) {
+      // Define padding based on p-6 (1.5rem = 24px)
+      const paddingX = 24;
+      const paddingY = 24;
+
+      const usableWidth = containerRect.width - 2 * paddingX;
+      const usableHeight = containerRect.height - 2 * paddingY;
+
+      if (buttonRect.width > usableWidth || buttonRect.height > usableHeight) {
+        console.warn("No button is too large for the container's usable area during mouse move.");
+        return;
+      }
+
       let newTop, newLeft;
       let attempts = 0;
       const maxAttempts = 50; // Prevent infinite loops
 
       do {
-        // Calculate new random position within container boundaries
-        newTop = Math.random() * (containerRect.height - buttonRect.height);
-        newLeft = Math.random() * (containerRect.width - buttonRect.width);
+        // Calculate new random position within container boundaries, respecting padding
+        newTop = paddingY + Math.random() * (usableHeight - buttonRect.height);
+        newLeft = paddingX + Math.random() * (usableWidth - buttonRect.width);
         attempts++;
       } while (
         attempts < maxAttempts &&
