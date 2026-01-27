@@ -59,7 +59,13 @@ export default {
   				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
   				border: 'hsl(var(--sidebar-border))',
   				ring: 'hsl(var(--sidebar-ring))'
-  			}
+  			},
+                valentine: {
+                    background: 'hsl(var(--valentine-background))',
+                    text: 'hsl(var(--valentine-text))',
+                    button: 'hsl(var(--valentine-button))',
+                    'button-foreground': 'hsl(var(--valentine-button-foreground))',
+                }
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
@@ -82,11 +88,16 @@ export default {
   				to: {
   					height: '0'
   				}
-  			}
+  			},
+            'float-heart': {
+                '0%': { transform: 'translateY(0) scale(0.8)', opacity: '0.7' },
+                '100%': { transform: 'translateY(-100vh) scale(1.2)', opacity: '0' },
+            },
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
-  			'accordion-up': 'accordion-up 0.2s ease-out'
+  			'accordion-up': 'accordion-up 0.2s ease-out',
+            'float-heart': 'float-heart var(--animation-duration) ease-in-out infinite',
   		}
   	}
   },
