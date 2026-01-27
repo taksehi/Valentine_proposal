@@ -5,10 +5,10 @@ import { Button } from '@/components/ui/button';
 
 const MusicPlayer: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef<HTMLAudioElement>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    // Initialize audio element
+    // Initialize audio element only once
     if (!audioRef.current) {
       audioRef.current = new Audio('/romantic-music.mp3');
       audioRef.current.loop = true;
