@@ -16,12 +16,12 @@ const ValentineLandingPage: React.FC = () => {
 
     // Play the music
     audio.play().then(() => {
-      // Navigate to the next page after music starts
-      router.push('/ask-valentine');
+      // Navigate to Our Moments page after music starts
+      router.push('/our-moments');
     }).catch(error => {
       console.log("Audio play failed, navigating anyway:", error);
       // Navigate even if audio fails to play
-      router.push('/ask-valentine');
+      router.push('/our-moments');
     });
   };
 
