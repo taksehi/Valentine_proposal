@@ -16,7 +16,7 @@ const OurMomentsPage: React.FC = () => {
     '/IMG_20240131_201839.jpg',
     '/IMG-20240208-WA0001.jpg',
     '/20230819220337955.jpg',
-    '/'
+    'WhatsApp Image 2025-09-13 at 22.49.59_0cda07b0.jpg'
     ,
   ];
 
