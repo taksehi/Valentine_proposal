@@ -10,12 +10,11 @@ const OurMomentsPage: React.FC = () => {
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
   const [isFading, setIsFading] = useState(false);
 
-  // Replace these with your actual photo URLs.
-  // For local images, place them in the 'public' folder and use paths like '/your-image-name.jpg'
+  // These are your actual photo URLs, now correctly referenced from the public folder.
   const photos = [
-    '/moment-1.jpg', // Your first local photo
-    '/moment-2.jpg', // Your second local photo
-    '/moment-3.jpg', // Your third local photo
+    '/IMG_20240131_201839.jpg',
+    '/IMG-20240208-WA0001.jpg',
+    '/20230819220337955.jpg',
     'https://images.unsplash.com/photo-1516589178581-6ca782e79396?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
     'https://images.unsplash.com/photo-1521119989659-a83eee488004?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
   ];
