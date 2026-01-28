@@ -97,11 +97,16 @@ export default {
                 '0%': { transform: 'translateY(0) scale(0.8)', opacity: '0.7' },
                 '100%': { transform: 'translateY(-100vh) scale(1.2)', opacity: '0' },
             },
+            'fall-flower': {
+                '0%': { transform: 'translateY(0) rotate(0deg)', opacity: '0.8' },
+                '100%': { transform: 'translateY(100vh) rotate(360deg)', opacity: '0' },
+            },
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
             'float-heart': 'float-heart var(--animation-duration) ease-in-out infinite',
+            'fall-flower': 'fall-flower var(--animation-duration) linear infinite',
   		}
   	}
   },
