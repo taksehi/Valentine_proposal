@@ -22,7 +22,7 @@ const FlowerAnimationPage: React.FC = () => {
           />
         </div>
 
-        <p className="text-xl sm:text-2xl mb-12 font-[family-name:var(--font-geist-sans)] max-w-2xl">
+        <p className="text-xl sm:text-2xl mb-12 font-[family-name:var(--font-geist-sans)] max-w-2xl text-center mx-auto">
           You make my heart bloom with happiness! I'm so excited to celebrate this special day with you, my love. 💘✨
         </p>
 
