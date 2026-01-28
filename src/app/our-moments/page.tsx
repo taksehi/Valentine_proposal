@@ -8,26 +8,23 @@ import { Heart } from 'lucide-react';
 const OurMomentsPage: React.FC = () => {
   const router = useRouter();
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
-  const [isFading, setIsFading] = useState(false);
+  // Removed isFading state for debugging purposes
+  // const [isFading, setIsFading] = useState(false);
 
-  // These are your actual photo URLs, now correctly referenced from the public folder.
   const photos = [
     '/IMG_20240131_201839.jpg',
     '/IMG-20240208-WA0001.jpg',
     '/20230819220337955.jpg',
-    'https://images.unsplash.com/photo-1516589178581-6ca782e79396?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    'https://images.unsplash.com/photo-1521119989659-a83eee488004?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
+    'https://images.unsplash.com/photo-1521119989659-a83eee488004?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+    // Removed the failing Unsplash image for now
+    // 'https://images.unsplash.com/photo-1516589178581-6ca782e79396?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
   ];
 
-  // Auto-advance slideshow with fade effect
+  // Auto-advance slideshow
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsFading(true);
-      setTimeout(() => {
-        setCurrentPhotoIndex((prevIndex) => (prevIndex + 1) % photos.length);
-        setIsFading(false);
-      }, 1000); // Fade duration
-    }, 5000); // 5 seconds per photo
+      setCurrentPhotoIndex((prevIndex) => (prevIndex + 1) % photos.length);
+    }, 3000); // Shorter interval for quicker debugging
 
     return () => clearInterval(interval);
   }, [photos.length]);
@@ -44,15 +41,15 @@ const OurMomentsPage: React.FC = () => {
         </h1>
 
         <div className="relative mb-12">
-          <div className="w-full h-80 sm:h-96 rounded-lg overflow-hidden shadow-lg">
+          <div className="w-full h-80 sm:h-96 rounded-lg overflow-hidden shadow-lg border-4 border-blue-500"> {/* Added border for visibility */}
             {photos.map((photo, index) => (
               <img
                 key={index}
                 src={photo}
                 alt={`Our moment ${index + 1}`}
-                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
+                className={`absolute inset-0 w-full h-full object-cover ${ // Removed transition and isFading logic
                   index === currentPhotoIndex ? 'opacity-100' : 'opacity-0'
-                } ${isFading ? 'opacity-0' : ''}`}
+                }`}
               />
             ))}
           </div>
