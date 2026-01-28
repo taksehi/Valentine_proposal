@@ -13,9 +13,9 @@ const OurMomentsPage: React.FC = () => {
   // Replace these with your actual photo URLs.
   // For local images, place them in the 'public' folder and use paths like '/your-image-name.jpg'
   const photos = [
-    '/pic1.jpg', // Example: Your first local photo
-    '/pic2.jpg', // Example: Your second local photo
-    '/pic3.jpg', // Example: Your third local photo
+    '/moment-1.jpg', // Your first local photo
+    '/moment-2.jpg', // Your second local photo
+    '/moment-3.jpg', // Your third local photo
     'https://images.unsplash.com/photo-1516589178581-6ca782e79396?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
     'https://images.unsplash.com/photo-1521119989659-a83eee488004?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80'
   ];
