@@ -1,12 +1,33 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Heart } from 'lucide-react';
 
 const OurMomentsPage: React.FC = () => {
   const router = useRouter();
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+  // Removed isFading state for debugging purposes
+  // const [isFading, setIsFading] = useState(false);
+
+  // Define photos array here, before it's used in useEffect
+  const photos = [
+    '/IMG_20240131_201839.jpg',
+    '/IMG-20240208-WA0001.jpg',
+    '/20230819220337955.jpg',
+    'WhatsApp Image 2025-09-13 at 22.49.59_0cda07b0.jpg'
+    ,
+  ];
+
+  // Auto-advance slideshow
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentPhotoIndex((prevIndex) => (prevIndex + 1) % photos.length);
+    }, 3000); // Shorter interval for quicker debugging
+
+    return () => clearInterval(interval);
+  }, [photos.length]);
 
   const handleContinue = () => {
     router.push('/ask-valentine');
@@ -20,17 +41,17 @@ const OurMomentsPage: React.FC = () => {
         </h1>
 
         <div className="relative mb-12">
-          <div className="w-full h-80 sm:h-96 rounded-lg overflow-hidden shadow-lg border-4 border-blue-500">
-            <video
-              src="/our-moments-video.mp4" // Replace with your video file path
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="absolute inset-0 w-full h-full object-cover"
-            >
-              Your browser does not support the video tag.
-            </video>
+          <div className="w-full h-80 sm:h-96 rounded-lg overflow-hidden shadow-lg border-4 border-blue-500"> {/* Added border for visibility */}
+            {photos.map((photo, index) => (
+              <img
+                key={index}
+                src={photo}
+                alt={`Our moment ${index + 1}`}
+                className={`absolute inset-0 w-full h-full object-cover ${ // Removed transition and isFading logic
+                  index === currentPhotoIndex ? 'opacity-100' : 'opacity-0'
+                }`}
+              />
+            ))}
           </div>
         </div>
 
