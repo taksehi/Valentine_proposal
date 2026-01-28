@@ -16,7 +16,7 @@ const OurMomentsPage: React.FC = () => {
     '/IMG_20240131_201839.jpg',
     '/IMG-20240208-WA0001.jpg',
     '/20230819220337955.jpg',
-    'https://images.unsplash.com/photo-1521119989659-a83eee488004?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
+    ,
   ];
 
   // Auto-advance slideshow
@@ -34,7 +34,7 @@ const OurMomentsPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-valentine-gradient-start to-valentine-gradient-end p-6 flex flex-col items-center justify-center text-valentine-text">
-      <div className="max-w-md w-full flex flex-col items-center"> {/* Added flex flex-col items-center */}
+      <div className="max-w-md w-full">
         <h1 className="text-3xl sm:text-4xl font-light mb-12 text-center font-[family-name:var(--font-geist-sans)]">
           Before I ask you something…
         </h1>
@@ -65,7 +65,7 @@ const OurMomentsPage: React.FC = () => {
 
         <Button
           onClick={handleContinue}
-          className="w-64 rounded-full bg-valentine-button text-valentine-button-foreground text-lg font-medium shadow-md hover:scale-105 transition-transform duration-300 group"
+          className="w-full sm:w-64 mx-auto rounded-full bg-valentine-button text-valentine-button-foreground text-lg font-medium shadow-md hover:scale-105 transition-transform duration-300 group"
         >
           Continue <Heart className="ml-2 w-5 h-5 group-hover:animate-pulse" />
         </Button>
