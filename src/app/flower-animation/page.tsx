@@ -15,10 +15,13 @@ const FlowerAnimationPage: React.FC = () => {
         </h1>
 
         <div className="mb-8">
-          <img
-            src="Valentine_s_Day_Gift_Box_Reveal.mp4"
-            alt="Beautiful blooming flowers animation"
-            className="w-64 h-64 sm:w-80 sm:h-80 mx-auto rounded-lg shadow-2xl"
+          <video
+            src="/Valentine_s_Day_Gift_Box_Reveal.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-64 h-64 sm:w-80 sm:h-80 mx-auto rounded-lg shadow-2xl object-cover"
           />
         </div>
 
