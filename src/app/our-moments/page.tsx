@@ -11,10 +11,7 @@ const OurMomentsPage: React.FC = () => {
   // Removed isFading state for debugging purposes
   // const [isFading, setIsFading] = useState(false);
 
-  const photos = [
-    <img src="/IMG_20240131_201839.jpg" />
-
-  ];
+ 
 
   // Auto-advance slideshow
   useEffect(() => {
