@@ -11,13 +11,10 @@ const OurMomentsPage: React.FC = () => {
   // Removed isFading state for debugging purposes
   // const [isFading, setIsFading] = useState(false);
 
-  // Define photos array here, before it's used in useEffect
+  // Replace img1,img2...img4 with your own pictures in public
   const photos = [
-    '/IMG_20240131_201839.jpg',
-    '/IMG-20240208-WA0001.jpg',
-    '/20230819220337955.jpg',
-    'WhatsApp Image 2025-09-13 at 22.49.59_0cda07b0.jpg'
-    ,
+    '/img1.jpg','/img2.jpg','/img3.jpg','/img4.jpg'
+    
   ];
 
   // Auto-advance slideshow
